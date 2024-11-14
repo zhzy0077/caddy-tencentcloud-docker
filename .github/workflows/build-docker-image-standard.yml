@@ -25,6 +25,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -93,7 +99,7 @@ jobs:
           push: true
           build-args: |
             CADDY_VERSION=${{ env.VERSION }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x
+          platforms: linux/amd64
           tags: |
             ghcr.io/zhzy0077/caddy-tencentcloud:${{ env.VERSION }}
             ghcr.io/zhzy0077/caddy-tencentcloud:latest
