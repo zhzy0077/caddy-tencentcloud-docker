@@ -101,13 +101,13 @@ jobs:
             CADDY_VERSION=${{ env.VERSION }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x
           tags: |
-            ghcr.io/${{ secrets.DOCKER_USERNAME }}/caddy-tencentcloud:${{ env.VERSION }}
-            ghcr.io/${{ secrets.DOCKER_USERNAME }}/caddy-tencentcloud:latest
+            ghcr.io/zhzy0077/caddy-tencentcloud:${{ env.VERSION }}
+            ghcr.io/zhzy0077/caddy-tencentcloud:latest
 
       - name: Clean up Docker images
         if: env.DEPENDENCIES_AVAILABILITY == 'true'
         run: |
-          docker rmi ghcr.io/${{ secrets.DOCKER_USERNAME }}/caddy-tencentcloud:${{ env.VERSION }} || true
+          docker rmi ghcr.io/zhzy0077/caddy-tencentcloud:${{ env.VERSION }} || true
           docker builder prune --force
 
       - name: Create GitHub Release
