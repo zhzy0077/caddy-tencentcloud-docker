@@ -4,7 +4,7 @@ FROM caddy:${CADDY_VERSION}-builder AS builder
 
 # Build Caddy with the TencentCloud DNS module
 RUN xcaddy build \
-    --with github.com/caddy-dns/tencentcloud
+    --with github.com/caddyserver/cache-handler
 
 # Final stage
 FROM caddy:${CADDY_VERSION}
